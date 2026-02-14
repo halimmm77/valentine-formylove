@@ -8,49 +8,46 @@
 <style>
 body{
     margin:0;
-    font-family: 'Segoe UI', sans-serif;
-    background: linear-gradient(135deg,#ff758c,#ff7eb3);
+    font-family:'Segoe UI',sans-serif;
+    background:linear-gradient(135deg,#ff758c,#ff7eb3);
     overflow:hidden;
+    text-align:center;
+    color:white;
 }
 
+/* LOVE JATUH */
 .love{
     position:fixed;
-    top:-10px;
+    top:-20px;
     font-size:20px;
     animation:jatuh linear infinite;
-    color:white;
     opacity:0.8;
 }
-
 @keyframes jatuh{
     0%{transform:translateY(0) rotate(0deg);}
     100%{transform:translateY(110vh) rotate(360deg);}
 }
 
-.home-box{
-    background: rgba(255,255,255,0.2);
-    backdrop-filter: blur(10px);
+/* DASHBOARD UMUM */
+.dashboard{
+    display:none;
     padding:40px;
-    border-radius:25px;
-    box-shadow:0 15px 35px rgba(0,0,0,0.3);
-    width:90%;
-    max-width:400px;
-    margin:120px auto;
-    text-align:center;
-    color:white;
-    animation:fadeUp 1s ease;
-    position:relative;
-    z-index:2;
-}
-
-.home-box:hover{
-    transform:scale(1.03);
-    transition:0.3s;
+    animation:fadeUp 0.8s ease;
 }
 
 @keyframes fadeUp{
-    from{opacity:0; transform:translateY(40px);}
-    to{opacity:1; transform:translateY(0);}
+    from{opacity:0;transform:translateY(40px);}
+    to{opacity:1;transform:translateY(0);}
+}
+
+.box{
+    background:rgba(255,255,255,0.2);
+    backdrop-filter:blur(10px);
+    padding:40px;
+    border-radius:25px;
+    box-shadow:0 15px 35px rgba(0,0,0,0.3);
+    max-width:400px;
+    margin:120px auto;
 }
 
 button{
@@ -64,28 +61,28 @@ button{
     cursor:pointer;
 }
 
+/* SURAT */
 .envelope{
-    width:320px;
-    height:200px;
+    width:340px;
+    height:230px;
     background:#ff4f81;
-    margin:100px auto;
+    margin:80px auto;
     position:relative;
     border-radius:10px;
-    display:none;
-    z-index:2;
+    overflow:hidden;
 }
 
 .letter{
     position:absolute;
-    left:10px;
-    right:10px;
+    left:15px;
+    right:15px;
     bottom:-100%;
-    height:150px;
+    height:170px;
     background:
         repeating-linear-gradient(
-            white,
-            white 25px,
-            #ffe6ec 26px
+            #fff,
+            #fff 24px,
+            #ffe6ec 25px
         );
     border-radius:5px;
     padding:15px;
@@ -98,18 +95,21 @@ button{
     transition:0.6s ease;
 }
 
-.letter::before{
-    content:"";
-    position:absolute;
-    left:0;
-    top:0;
-    bottom:0;
-    width:6px;
-    background:#ffb3c6;
+.open .letter{
+    bottom:30px;
 }
 
-.open .letter{
-    bottom:20px;
+/* KATA PANJANG */
+.long-text{
+    max-width:500px;
+    margin:80px auto;
+    background:rgba(255,255,255,0.2);
+    backdrop-filter:blur(10px);
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 15px 35px rgba(0,0,0,0.3);
+    height:400px;
+    overflow-y:auto;
 }
 </style>
 </head>
@@ -126,14 +126,38 @@ for(let i=0;i<20;i++){
 }
 </script>
 
-<div class="home-box" id="home">
-    <h2>Happy Valentine Sayang 💖</h2>
-    <button onclick="buka()">Klik dulu sayang</button>
+<!-- DASBOR 1 -->
+<div class="dashboard" id="dash1" style="display:block;">
+    <div class="box">
+        <h2>Happy Valentine Sayang 💖</h2>
+        <button onclick="next(2)">Klik lagi dong sayang 💕</button>
+    </div>
 </div>
 
-<div class="envelope" id="surat" onclick="this.classList.toggle('open')">
-    <div class="letter">
-        Happy Valentine sayangku tercinta 💕  
+<!-- DASBOR 2 -->
+<div class="dashboard" id="dash2">
+    <h2>Buka dulu ya sayang 💌</h2>
+    <div class="envelope" onclick="this.classList.toggle('open')">
+        <div class="letter">
+            Happy Valentine sayangku 💕  
+
+            Terima kasih sudah hadir di hidup aku.
+            Kamu bikin semuanya jadi lebih indah.
+            Kamu itu bukan cuma pacar,
+            tapi rumah buat aku pulang dan merasa tenang.
+
+            Aku selalu milih kamu,
+            dalam keadaan apapun.
+            Aku sayang kamu 💖
+        </div>
+    </div>
+    <button onclick="next(3)">Lanjut lagi dong sayang 💗</button>
+</div>
+
+<!-- DASBOR 3 -->
+<div class="dashboard" id="dash3">
+    <div class="long-text">
+        Happy Valentine sayangku tercinta 💕
 
         Aku cuma mau bilang terima kasih karena sudah hadir di hidup aku.
         Sejak kenal kamu, hari-hari aku jadi lebih berwarna, lebih hangat,
@@ -170,9 +194,11 @@ for(let i=0;i<20;i++){
 </div>
 
 <script>
-function buka(){
-    document.getElementById("home").style.display="none";
-    document.getElementById("surat").style.display="block";
+function next(n){
+    document.getElementById("dash1").style.display="none";
+    document.getElementById("dash2").style.display="none";
+    document.getElementById("dash3").style.display="none";
+    document.getElementById("dash"+n).style.display="block";
 }
 </script>
 
