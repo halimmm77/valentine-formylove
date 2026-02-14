@@ -30,16 +30,33 @@ h1{
     margin-top:40px;
 }
 
-/* KOTAK HALAMAN AWAL */
+/* ===== KOTAK HALAMAN AWAL ===== */
 .home-box{
-    background: rgba(255,255,255,0.15);
-    backdrop-filter: blur(8px);
+    background: rgba(255,255,255,0.18);
+    backdrop-filter: blur(10px);
     padding:40px;
     border-radius:20px;
-    box-shadow:0 8px 25px rgba(0,0,0,0.3);
+    box-shadow:0 10px 30px rgba(0,0,0,0.3);
     width:90%;
     max-width:400px;
     margin:120px auto;
+    animation:fadeUp 1s ease;
+    transition:0.4s;
+}
+
+.home-box:hover{
+    transform:scale(1.03);
+}
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(40px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
 }
 
 /* BUTTON */
@@ -72,7 +89,7 @@ button:hover{
     }
 }
 
-/* Amplop */
+/* ===== AMplop ===== */
 .envelope{
     width:220px;
     height:140px;
@@ -81,6 +98,7 @@ button:hover{
     position:relative;
     border-radius:10px;
     cursor:pointer;
+    overflow:hidden;
 }
 
 .flap{
@@ -93,29 +111,29 @@ button:hover{
     top:-70px;
     left:0;
     transition:0.5s;
+    transform-origin:top;
 }
 .open .flap{
     transform:rotateX(180deg);
-    transform-origin:top;
 }
 
-/* SURAT (DIBUAT SEPERTI KERTAS) */
+/* ===== SURAT FIX (TIDAK NGEBUG) ===== */
 .letter{
     position:absolute;
-    top:10px;
     left:10px;
     right:10px;
-    bottom:10px;
+    bottom:-100%;
+    height:110px;
     background:#fffdf7;
     border-radius:5px;
     padding:10px;
     font-size:14px;
     color:#d6336c;
     overflow-y:auto;
-    max-height:300px;
     box-sizing:border-box;
     box-shadow:0 5px 15px rgba(0,0,0,0.2);
     border:1px solid #ffd6e0;
+    transition:0.6s ease;
 }
 
 /* garis samping kaya kertas */
@@ -129,6 +147,11 @@ button:hover{
     background:#ffb3c6;
     border-top-left-radius:5px;
     border-bottom-left-radius:5px;
+}
+
+/* saat dibuka */
+.open .letter{
+    bottom:15px;
 }
 
 /* Ring */
