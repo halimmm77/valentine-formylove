@@ -3,247 +3,176 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Valentine 💘</title>
+<title>Happy Valentine</title>
 
 <style>
 body{
     margin:0;
-    padding:0;
     font-family: 'Segoe UI', sans-serif;
-    background: linear-gradient(to bottom, #ff9a9e, #fad0c4);
-    background-attachment: fixed;
-    overflow-x:hidden;
-    text-align:center;
+    background: linear-gradient(135deg,#ff758c,#ff7eb3);
+    overflow:hidden;
+}
+
+.love{
+    position:fixed;
+    top:-10px;
+    font-size:20px;
+    animation:jatuh linear infinite;
     color:white;
+    opacity:0.8;
 }
 
-/* SECTION */
-.section{
-    display:none;
-    padding:20px;
-}
-.active{
-    display:block;
+@keyframes jatuh{
+    0%{transform:translateY(0) rotate(0deg);}
+    100%{transform:translateY(110vh) rotate(360deg);}
 }
 
-h1{
-    margin-top:40px;
-}
-
-/* ===== KOTAK HALAMAN AWAL ===== */
 .home-box{
-    background: rgba(255,255,255,0.18);
+    background: rgba(255,255,255,0.2);
     backdrop-filter: blur(10px);
     padding:40px;
-    border-radius:20px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.3);
+    border-radius:25px;
+    box-shadow:0 15px 35px rgba(0,0,0,0.3);
     width:90%;
     max-width:400px;
     margin:120px auto;
+    text-align:center;
+    color:white;
     animation:fadeUp 1s ease;
-    transition:0.4s;
+    position:relative;
+    z-index:2;
 }
 
 .home-box:hover{
     transform:scale(1.03);
+    transition:0.3s;
 }
 
 @keyframes fadeUp{
-    from{
-        opacity:0;
-        transform:translateY(40px);
-    }
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
+    from{opacity:0; transform:translateY(40px);}
+    to{opacity:1; transform:translateY(0);}
 }
 
-/* BUTTON */
 button{
+    margin-top:20px;
     padding:12px 25px;
     border:none;
-    border-radius:25px;
+    border-radius:20px;
     background:white;
-    color:#ff4b5c;
+    color:#ff4f81;
     font-weight:bold;
     cursor:pointer;
-    margin-top:20px;
-    transition:0.3s;
-}
-button:hover{
-    transform:scale(1.1);
 }
 
-/* Hujan Hati */
-.heart{
-    position:fixed;
-    top:-10px;
-    font-size:20px;
-    animation:fall linear forwards;
-}
-@keyframes fall{
-    to{
-        transform:translateY(100vh);
-        opacity:0;
-    }
-}
-
-/* ===== AMplop ===== */
 .envelope{
-    width:220px;
-    height:140px;
-    background:#fff;
-    margin:40px auto;
+    width:320px;
+    height:200px;
+    background:#ff4f81;
+    margin:100px auto;
     position:relative;
     border-radius:10px;
-    cursor:pointer;
-    overflow:hidden;
+    display:none;
+    z-index:2;
 }
 
-.flap{
-    width:0;
-    height:0;
-    border-left:110px solid transparent;
-    border-right:110px solid transparent;
-    border-bottom:70px solid #ff4b5c;
-    position:absolute;
-    top:-70px;
-    left:0;
-    transition:0.5s;
-    transform-origin:top;
-}
-.open .flap{
-    transform:rotateX(180deg);
-}
-
-/* ===== SURAT FIX (TIDAK NGEBUG) ===== */
 .letter{
     position:absolute;
     left:10px;
     right:10px;
     bottom:-100%;
-    height:110px;
-    background:#fffdf7;
+    height:150px;
+    background:
+        repeating-linear-gradient(
+            white,
+            white 25px,
+            #ffe6ec 26px
+        );
     border-radius:5px;
-    padding:10px;
+    padding:15px;
     font-size:14px;
     color:#d6336c;
     overflow-y:auto;
     box-sizing:border-box;
     box-shadow:0 5px 15px rgba(0,0,0,0.2);
-    border:1px solid #ffd6e0;
+    border:1px solid #ffc2d1;
     transition:0.6s ease;
 }
 
-/* garis samping kaya kertas */
 .letter::before{
     content:"";
     position:absolute;
     left:0;
     top:0;
     bottom:0;
-    width:5px;
+    width:6px;
     background:#ffb3c6;
-    border-top-left-radius:5px;
-    border-bottom-left-radius:5px;
 }
 
-/* saat dibuka */
 .open .letter{
-    bottom:15px;
-}
-
-/* Ring */
-.ring{
-    font-size:60px;
-    margin-top:30px;
-    animation:zoom 1.5s infinite alternate;
-}
-@keyframes zoom{
-    from{ transform:scale(1); }
-    to{ transform:scale(1.2); }
+    bottom:20px;
 }
 </style>
 </head>
-
 <body>
 
-<!-- HALAMAN AWAL -->
-<div id="home" class="section active">
-    <div class="home-box">
-        <h1>Happy Valentine Sayang 💘</h1>
-        <button onclick="mulai()">Klik Dulu Dong 💌</button>
-    </div>
+<script>
+for(let i=0;i<20;i++){
+    let love=document.createElement("div");
+    love.className="love";
+    love.innerHTML="❤";
+    love.style.left=Math.random()*100+"vw";
+    love.style.animationDuration=(3+Math.random()*5)+"s";
+    document.body.appendChild(love);
+}
+</script>
+
+<div class="home-box" id="home">
+    <h2>Happy Valentine Sayang 💖</h2>
+    <button onclick="buka()">Klik dulu sayang</button>
 </div>
 
-<!-- DASHBOARD 1 -->
-<div id="dash1" class="section">
-    <h1>Untuk Kamu 💕</h1>
-    <div class="envelope" onclick="bukaSurat(this)">
-        <div class="flap"></div>
-        <div class="letter" id="letter">
-            Hai sayangku 💖<br><br>
-            Kamu itu alasan aku bahagia. Terima kasih sudah selalu ada. Hari ini bukan cuma Valentine, tapi hari buat ngingetin kamu betapa berharganya kamu buat aku 💕
-        </div>
-    </div>
-    <button onclick="keDashboard2()">Lanjut Sayang 💕</button>
-</div>
+<div class="envelope" id="surat" onclick="this.classList.toggle('open')">
+    <div class="letter">
+        Happy Valentine sayangku tercinta 💕  
 
-<!-- DASHBOARD 2 -->
-<div id="dash2" class="section">
-    <h1>Aku Cuma Mau Bilang... 💌</h1>
-    <p>
-    Sayangku… 💖<br><br>
-    Kalau aku disuruh jelasin kamu itu apa di hidup aku, mungkin aku bakal kehabisan kata-kata sebelum selesai. Karena kamu bukan cuma seseorang yang spesial… kamu itu rumah. Tempat aku merasa tenang. Tempat aku bisa jadi diri sendiri tanpa takut dihakimi.
-    <br><br>
-    Sejak kamu hadir, hari-hariku yang biasa aja jadi luar biasa. Senyum kamu itu sederhana, tapi efeknya besar banget buat aku. Chat singkat dari kamu bisa bikin mood aku balik lagi. Suara kamu bisa bikin hati aku adem.
-    <br><br>
-    Aku bersyukur banget Tuhan ngasih aku kesempatan buat kenal kamu, ngobrol sama kamu, ketawa bareng kamu, dan ngerasain gimana rasanya punya seseorang yang tulus.
-    <br><br>
-    Di hari Valentine ini, aku gak cuma mau bilang "Happy Valentine" aja… Tapi aku mau bilang terima kasih. Terima kasih sudah sabar. Terima kasih sudah peduli. Terima kasih sudah jadi alasan aku semangat.
-    <br><br>
-    Aku gak janji semuanya bakal selalu sempurna. Tapi aku janji bakal selalu berusaha. Berusaha ngerti kamu. Berusaha jaga kamu. Berusaha tetap ada buat kamu.
-    <br><br>
-    Kalau suatu hari kamu capek, aku mau jadi tempat kamu istirahat. Kalau kamu sedih, aku mau jadi orang pertama yang bikin kamu senyum lagi.
-    <br><br>
-    Aku sayang kamu… bukan cuma karena siapa kamu, tapi karena siapa aku saat aku sama kamu.
-    <br><br>
-    Hari ini, besok, dan seterusnya… semoga kita tetap bareng, tetap kuat, dan tetap jadi versi terbaik untuk satu sama lain.
-    <br><br>
-    Happy Valentine, cinta kecilku 💘
-    </p>
-    <div class="ring">💍</div>
+        Aku cuma mau bilang terima kasih karena sudah hadir di hidup aku.
+        Sejak kenal kamu, hari-hari aku jadi lebih berwarna, lebih hangat,
+        dan lebih berarti. Kamu itu bukan cuma pacar buat aku,
+        tapi juga teman cerita, tempat pulang, tempat nyaman,
+        dan alasan aku senyum setiap hari.
+
+        Kadang kita mungkin beda pendapat,
+        kadang ada salah paham kecil,
+        tapi satu hal yang pasti —
+        aku selalu milih kamu.
+
+        Aku sayang kamu bukan cuma karena kamu cantik atau lucu,
+        tapi karena cara kamu peduli,
+        cara kamu perhatian,
+        dan cara kamu selalu bikin aku merasa berarti.
+
+        Semoga hubungan kita makin kuat,
+        makin dewasa,
+        makin saling ngerti satu sama lain.
+        Aku pengen terus jalan bareng kamu,
+        lewatin banyak momen,
+        bikin banyak kenangan,
+        dan tumbuh bareng sampai nanti.
+
+        Terima kasih sudah jadi kamu.
+        Jangan pernah berubah jadi orang lain,
+        karena aku jatuh cinta sama kamu yang sekarang.
+
+        Aku sayang kamu hari ini,
+        besok,
+        dan seterusnya 💖
+    </div>
 </div>
 
 <script>
-function mulai(){
-    document.getElementById("home").classList.remove("active");
-    document.getElementById("dash1").classList.add("active");
-    hujanHati();
-}
-
-function bukaSurat(el){
-    el.classList.toggle("open");
-    let letter = el.querySelector(".letter");
-    letter.scrollTop = 0;
-}
-
-function keDashboard2(){
-    document.getElementById("dash1").classList.remove("active");
-    document.getElementById("dash2").classList.add("active");
-}
-
-function hujanHati(){
-    setInterval(()=>{
-        let heart=document.createElement("div");
-        heart.className="heart";
-        heart.innerHTML="💖";
-        heart.style.left=Math.random()*100+"vw";
-        heart.style.animationDuration=(Math.random()*3+2)+"s";
-        document.body.appendChild(heart);
-        setTimeout(()=>{heart.remove();},5000);
-    },300);
+function buka(){
+    document.getElementById("home").style.display="none";
+    document.getElementById("surat").style.display="block";
 }
 </script>
 
