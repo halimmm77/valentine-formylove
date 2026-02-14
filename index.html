@@ -10,8 +10,7 @@ body{
   margin:0;
   padding:0;
   font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(135deg,#ff758c,#ff7eb3);
-  background-attachment: fixed;
+  background: linear-gradient(to bottom, #ff9a9e, #fad0c4);
   overflow-x:hidden;
   text-align:center;
   color:white;
@@ -46,22 +45,17 @@ button:hover{
   transform:scale(1.1);
 }
 
-/* LOVE JATUH (disamain kaya sebelumnya) */
+/* Hujan Hati */
 .heart{
   position:fixed;
-  top:-20px;
+  top:-10px;
   font-size:20px;
   animation:fall linear forwards;
-  pointer-events:none;
-  opacity:0.8;
 }
 
 @keyframes fall{
-  0%{
-    transform:translateY(0) rotate(0deg);
-  }
-  100%{
-    transform:translateY(110vh) rotate(360deg);
+  to{
+    transform:translateY(100vh);
     opacity:0;
   }
 }
@@ -225,7 +219,7 @@ function mulai(){
 function bukaSurat(el){
   el.classList.toggle("open");
   let letter = el.querySelector(".letter");
-  letter.scrollTop = 0;
+  letter.scrollTop = 0; // scroll ke atas saat dibuka
 }
 
 function keDashboard2(){
