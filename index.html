@@ -9,8 +9,10 @@
 body{
     margin:0;
     padding:0;
-    font-family: 'Segoe UI', sans-serif;
+    font-family:'Segoe UI', sans-serif;
     background: linear-gradient(to bottom, #ff9a9e, #fad0c4);
+    background-attachment: fixed;
+    min-height:100vh;
     overflow-x:hidden;
     text-align:center;
     color:white;
@@ -19,6 +21,7 @@ body{
 .section{
     display:none;
     padding:20px;
+    min-height:100vh;
 }
 
 .active{
@@ -69,6 +72,7 @@ button:hover{
     position:relative;
     border-radius:10px;
     cursor:pointer;
+    overflow:hidden;
 }
 
 .flap{
@@ -80,35 +84,33 @@ button:hover{
     position:absolute;
     top:-70px;
     left:0;
-    transition:0.5s;
+    transition:0.6s;
+    transform-origin:top;
 }
 
 .open .flap{
     transform:rotateX(180deg);
-    transform-origin:top;
 }
 
-/* SURAT (SUDAH DIBENERIN) */
+/* SURAT KELUAR DARI DALAM */
 .letter{
     position:absolute;
-    top:10px;
     left:10px;
     right:10px;
-    bottom:10px;
+    bottom:-120px;
+    height:110px;
     background:#ffe6ea;
     border-radius:5px;
     padding:10px;
     font-size:14px;
     color:#d6336c;
     overflow-y:auto;
-    max-height:300px;
     box-sizing:border-box;
-    opacity:0;
-    transition:0.5s;
+    transition:0.6s ease;
 }
 
 .open .letter{
-    opacity:1;
+    bottom:20px;
 }
 
 /* Ring */
@@ -139,7 +141,7 @@ button:hover{
 
     <div class="envelope" onclick="bukaSurat(this)">
         <div class="flap"></div>
-        <div class="letter" id="letter">
+        <div class="letter">
             Hai sayangku 💖<br><br>
             Kamu itu alasan aku bahagia. Terima kasih sudah selalu ada.
             Hari ini bukan cuma Valentine, tapi hari buat ngingetin kamu
