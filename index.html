@@ -9,24 +9,43 @@
 body{
   margin:0;
   padding:0;
-  font-family: 'Segoe UI', sans-serif;
+  font-family:'Segoe UI', sans-serif;
   background: linear-gradient(to bottom, #ff9a9e, #fad0c4);
   overflow-x:hidden;
   text-align:center;
   color:white;
 }
 
+/* Section */
 .section{
   display:none;
-  padding:20px;
+  padding:30px 20px;
+  min-height:100vh;
 }
 
 .active{
   display:block;
 }
 
+/* Card lucu */
+.card{
+  background:rgba(255,255,255,0.2);
+  backdrop-filter:blur(10px);
+  padding:30px;
+  border-radius:25px;
+  max-width:400px;
+  margin:40px auto;
+  box-shadow:0 10px 30px rgba(0,0,0,0.2);
+  animation:fadeUp 1s ease;
+}
+
+@keyframes fadeUp{
+  from{opacity:0; transform:translateY(30px);}
+  to{opacity:1; transform:translateY(0);}
+}
+
 h1{
-  margin-top:40px;
+  margin-top:10px;
 }
 
 button{
@@ -45,64 +64,18 @@ button:hover{
   transform:scale(1.1);
 }
 
-/* Hujan Hati */
-.heart{
-  position:fixed;
-  top:-10px;
-  font-size:20px;
-  animation:fall linear forwards;
-}
-
-@keyframes fall{
-  to{
-    transform:translateY(100vh);
-    opacity:0;
-  }
-}
-
-/* Amplop */
-.envelope{
-  width:220px;
-  height:140px;
-  background:#fff;
-  margin:40px auto;
-  position:relative;
-  border-radius:10px;
-  cursor:pointer;
-}
-
-.flap{
-  width:0;
-  height:0;
-  border-left:110px solid transparent;
-  border-right:110px solid transparent;
-  border-bottom:70px solid #ff4b5c;
-  position:absolute;
-  top:-70px;
-  left:0;
-  transition:0.5s;
-}
-
-.open .flap{
-  transform:rotateX(180deg);
-  transform-origin:top;
-}
-
-.letter{
-  position:absolute;
-  top:10px;
-  left:10px;
-  right:10px;
-  bottom:10px;
-  background:#ffe6ea;
-  border-radius:5px;
-  padding:10px;
-  font-size:14px;
+/* Surat Box */
+.letter-box{
+  background:#fff0f5;
   color:#d6336c;
-  display:block;
+  padding:20px;
+  border-radius:20px;
+  max-width:500px;
+  margin:20px auto;
+  box-shadow:0 8px 20px rgba(0,0,0,0.15);
+  max-height:350px;
   overflow-y:auto;
-  max-height:300px;
-  box-sizing:border-box;
+  animation:fadeUp 1s ease;
 }
 
 /* Ring */
@@ -116,31 +89,57 @@ button:hover{
   from{ transform:scale(1); }
   to{ transform:scale(1.2); }
 }
+
+/* Hujan Love */
+.heart{
+  position:fixed;
+  top:-10px;
+  font-size:20px;
+  animation:fall linear forwards;
+}
+
+@keyframes fall{
+  to{
+    transform:translateY(100vh);
+    opacity:0;
+  }
+}
 </style>
 </head>
 
 <body>
 
-<!-- HALAMAN AWAL -->
+<!-- HOME -->
 <div id="home" class="section active">
-  <h1>Happy Valentine Sayang 💘</h1>
-  <button onclick="mulai()">Klik Dulu Dong 💌</button>
+  <div class="card">
+    <h1>Happy Valentine Sayang 💘</h1>
+    <p>Klik lagi dong sayang 💕</p>
+    <button onclick="mulai()">Masuk Yuk 💌</button>
+  </div>
 </div>
 
 <!-- DASHBOARD 1 -->
 <div id="dash1" class="section">
-  <h1>Untuk Kamu 💕</h1>
+  <div class="card">
+    <h1>Untuk Kamu 💖</h1>
+    <p>Aku punya sesuatu buat kamu...</p>
+    <button onclick="bukaSurat()">Buka Surat 💌</button>
+  </div>
 
-  <div class="envelope" onclick="bukaSurat(this)">
-    <div class="flap"></div>
-    <div class="letter" id="letter">
-      Hai sayangku 💖<br><br>
-      Kamu itu alasan aku bahagia.  
-      Terima kasih sudah selalu ada.  
-      Hari ini bukan cuma Valentine,  
-      tapi hari buat ngingetin kamu  
-      betapa berharganya kamu buat aku 💕
-    </div>
+  <div id="surat" class="letter-box" style="display:none;">
+    Hai sayangku 💖<br><br>
+    Kamu itu alasan aku bahagia setiap hari.  
+    Senyum kamu bikin dunia aku lebih cerah.  
+    Hadir kamu bikin semuanya terasa lebih lengkap.  
+    <br><br>
+    Aku bersyukur banget bisa kenal kamu,  
+    bisa ngobrol sama kamu,  
+    bisa ketawa bareng kamu.  
+    <br><br>
+    Hari ini cuma pengingat kecil  
+    kalau kamu itu berharga banget buat aku.  
+    Jangan pernah ragu ya,  
+    karena kamu selalu cukup dan lebih dari cukup di hati aku 💕
   </div>
 
   <button onclick="keDashboard2()">Lanjut Sayang 💕</button>
@@ -148,9 +147,11 @@ button:hover{
 
 <!-- DASHBOARD 2 -->
 <div id="dash2" class="section">
-  <h1>Aku Cuma Mau Bilang... 💌</h1>
+  <div class="card">
+    <h1>Aku Cuma Mau Bilang... 💌</h1>
+  </div>
 
-  <p>
+  <div class="letter-box">
     Sayangku… 💖<br><br>
 
     Kalau aku disuruh jelasin kamu itu apa di hidup aku,  
@@ -161,23 +162,9 @@ button:hover{
     <br><br>
 
     Sejak kamu hadir, hari-hariku yang biasa aja jadi luar biasa.  
-    Senyum kamu itu sederhana, tapi efeknya besar banget buat aku.  
-    Chat singkat dari kamu bisa bikin mood aku balik lagi.  
+    Senyum kamu sederhana, tapi efeknya besar banget buat aku.  
+    Chat dari kamu bisa bikin mood aku balik lagi.  
     Suara kamu bisa bikin hati aku adem.  
-    <br><br>
-
-    Aku bersyukur banget Tuhan ngasih aku kesempatan  
-    buat kenal kamu, ngobrol sama kamu,  
-    ketawa bareng kamu, dan ngerasain  
-    gimana rasanya punya seseorang yang tulus.  
-    <br><br>
-
-    Di hari Valentine ini,  
-    aku gak cuma mau bilang "Happy Valentine" aja…  
-    Tapi aku mau bilang terima kasih.  
-    Terima kasih sudah sabar.  
-    Terima kasih sudah peduli.  
-    Terima kasih sudah jadi alasan aku semangat.  
     <br><br>
 
     Aku gak janji semuanya bakal selalu sempurna.  
@@ -194,32 +181,24 @@ button:hover{
     <br><br>
 
     Aku sayang kamu…  
-    bukan cuma karena siapa kamu,  
-    tapi karena siapa aku saat aku sama kamu.  
-    <br><br>
-
-    Hari ini, besok, dan seterusnya…  
-    semoga kita tetap bareng, tetap kuat,  
-    dan tetap jadi versi terbaik untuk satu sama lain.  
-    <br><br>
-
-    Happy Valentine, cinta kecilku 💘  
-  </p>
+    hari ini, besok, dan seterusnya 💘
+  </div>
 
   <div class="ring">💍</div>
 </div>
 
 <script>
+
+/* Navigasi */
 function mulai(){
   document.getElementById("home").classList.remove("active");
   document.getElementById("dash1").classList.add("active");
-  hujanHati();
 }
 
-function bukaSurat(el){
-  el.classList.toggle("open");
-  let letter = el.querySelector(".letter");
-  letter.scrollTop = 0; // scroll ke atas saat dibuka
+function bukaSurat(){
+  let surat = document.getElementById("surat");
+  surat.style.display="block";
+  surat.scrollTop=0;
 }
 
 function keDashboard2(){
@@ -227,17 +206,17 @@ function keDashboard2(){
   document.getElementById("dash2").classList.add("active");
 }
 
-function hujanHati(){
-  setInterval(()=>{
-    let heart=document.createElement("div");
-    heart.className="heart";
-    heart.innerHTML="💖";
-    heart.style.left=Math.random()*100+"vw";
-    heart.style.animationDuration=(Math.random()*3+2)+"s";
-    document.body.appendChild(heart);
-    setTimeout(()=>{heart.remove();},5000);
-  },300);
-}
+/* Hujan Love (aktif dari awal) */
+setInterval(()=>{
+  let heart=document.createElement("div");
+  heart.className="heart";
+  heart.innerHTML="💖";
+  heart.style.left=Math.random()*100+"vw";
+  heart.style.animationDuration=(Math.random()*3+2)+"s";
+  document.body.appendChild(heart);
+  setTimeout(()=>{heart.remove();},5000);
+},300);
+
 </script>
 
 </body>
